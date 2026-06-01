@@ -1,0 +1,246 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --day-bg: linear-gradient(135deg, #5961f9 0%, #ee9ae5 100%);
+  --day-primary: #ffffff;
+  --day-secondary: #f3f4f6;
+  --day-subtle: rgba(255, 255, 255, 0.65);
+  --day-border: rgba(255, 255, 255, 0.35);
+  --day-shadow: 0 20px 40px -10px rgba(89, 97, 249, 0.3);
+
+  --night-bg: linear-gradient(145deg, #1f203c 0%, #0d0d15 50%, #131524 100%);
+  --night-primary: #f3f4f6;
+  --night-secondary: #cbd5e1;
+  --night-subtle: rgba(148, 163, 184, 0.7);
+  --night-border: rgba(255, 255, 255, 0.08);
+  --night-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  --card-radius: 2em;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #06060a96;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+  height: 220px;
+  width: 320px;
+  padding: 22px 24px;
+  border: 1px solid var(--day-border);
+  border-radius: var(--card-radius);
+  background: var(--day-bg);
+  color: var(--day-primary);
+  box-shadow: var(--day-shadow);
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card.is-night {
+  background: var(--night-bg);
+  color: var(--night-primary);
+  border-color: var(--night-border);
+  box-shadow: var(--night-shadow);
+}
+
+.add-remove-card {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.add-remove-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.add-remove-card .toggle-icon {
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.add-remove-card.is-active .toggle-icon {
+  transform: rotate(45deg);
+}
+
+.add-city {
+  display: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--day-secondary);
+  opacity: 0.8;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.card.is-night .add-city {
+  color: var(--night-secondary);
+}
+.add-city--visible {
+  display: block;
+}
+
+.search-bar {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  width: calc(100% - 72px);
+  height: 36px;
+  padding: 0 16px;
+  z-index: 20;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.search-bar::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.search-bar.search-bar--visible {
+  display: block; /* Overrides the default hidden layout rule */
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.weather-info {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.weather-info--hidden {
+  display: none;
+}
+
+.city {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--day-secondary);
+  opacity: 0.9;
+}
+
+.card.is-night .city {
+  color: var(--night-secondary);
+}
+
+.svg-temp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.weather-group-svg {
+  z-index: 1;
+  height: 76px;
+  width: 76px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px; /* Matches the rounded card style */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+}
+
+.display-temp {
+  font-size: 3.5rem;
+  font-weight: 200;
+  line-height: 1;
+  color: inherit;
+  letter-spacing: -0.03em;
+}
+
+.display-temp span {
+  font-size: 0.4em;
+  font-weight: 400;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.description {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.time-date {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Thin divider boundary line */
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--day-subtle);
+}
+.card.is-night .time-date {
+  color: var(--night-subtle);
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+.day-night {
+  display: none;
+}
