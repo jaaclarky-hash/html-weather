@@ -48,7 +48,7 @@ body {
   position: relative;
   align-items: center;
   overflow: hidden;
-  height: 220px;
+  min-height: 220px;
   width: 320px;
   padding: 22px 24px;
   border: 1px solid var(--day-border);
@@ -153,7 +153,7 @@ body {
 }
 
 .search-bar.search-bar--visible {
-  display: block; /* Overrides the default hidden layout rule */
+  display: block;
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -200,7 +200,7 @@ body {
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 18px; /* Matches the rounded card style */
+  border-radius: 18px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
   object-fit: contain;
 }
@@ -231,7 +231,7 @@ body {
   justify-content: space-between;
   width: 100%;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Thin divider boundary line */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--day-subtle);
