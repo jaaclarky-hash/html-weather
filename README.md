@@ -11,7 +11,7 @@ A vanilla JavaScript weather dashboard built with HTML, CSS, and JS — no frame
 
 ## Features
 
-- Add cities via search with autofill
+- Add cities via search
 - Displays temperature (°C / °F toggle), city name, local date & time, and weather description
 - Dynamic backgrounds: weather-type SVGs (rain, snow, clear, etc.)
 - Day/night adaptive backgrounds (blue / black)

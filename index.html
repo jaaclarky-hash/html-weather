@@ -7,15 +7,16 @@
     <title>HTML Weather Dashboard</title>
   </head>
   <body>
-    <div class="app">
-      <div class="card is-night">
-        <button class="add-remove-card">
+    <div class="app" role="main">
+      <div class="card is-night card--template">
+        <button class="add-remove-card" aria-label="Add or remove city">
           <span class="toggle-icon">+</span>
         </button>
         <input
           type="text"
           placeholder=" Search for a City"
           class="search-bar"
+          aria-label="Search for a city"
         />
         <p class="add-city add-city--visible">Add a City</p>
 
@@ -23,11 +24,13 @@
           <p class="city">City</p>
           <div class="svg-temp">
             <img
-              src="weather/Drizzle.svg"
+              src="/assets/weather/Drizzle.svg"
               alt="weather-group"
               class="weather-group-svg"
             />
-            <p class="display-temp">31 <span>&deg;C</span></p>
+            <p class="display-temp">
+              <span class="temp-value">31</span><span class="deg">&deg;C</span>
+            </p>
           </div>
           <p class="description">Raining</p>
 
@@ -37,6 +40,37 @@
           </div>
           <p class="day-night">Night</p>
         </div>
+      </div>
+
+      <div class="card logo-card">
+        <label class="unit-toggle" aria-label="Toggle temperature unit">
+          <input type="checkbox" id="unit-toggle-input" />
+          <div class="unit-slider">
+            <div class="unit-roller">
+              <span class="unit-text text-c">°C</span>
+              <span class="unit-text text-f">°F</span>
+            </div>
+          </div>
+        </label>
+
+        <label class="theme-toggle" aria-label="Toggle dark mode">
+          <input type="checkbox" id="theme-toggle-input" />
+          <div class="slider">
+            <div class="roller">
+              <img
+                src="/assets/weather/Clear-d.svg"
+                alt="Day"
+                class="icon icon-sun"
+              />
+              <img
+                src="/assets/weather/Clear-n.svg"
+                alt="Night"
+                class="icon icon-moon"
+              />
+            </div>
+          </div>
+        </label>
+        <img src="/assets/logo-WE.png" alt="logo" />
       </div>
     </div>
     <script src="config.js"></script>
